@@ -1,10 +1,12 @@
 package com.example.androidfirebaseauthentication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class Profile : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
@@ -24,8 +26,36 @@ class Profile : AppCompatActivity() {
         userProfile()
     }
 
+    val firstName = findViewById<TextView>(R.id.tvFistName)
+    val lastName = findViewById<TextView>(R.id.tvLastName)
+    val userName = findViewById<TextView>(R.id.tvUsername)
+    val logOutbutton = findViewById<Button>(R.id.btnLogOut)
+
+
     private fun userProfile(){
         val user = auth.currentUser
-        databaseReference?.child(user?.uid!!)
+        val userreference = databaseReference?.child(user?.uid!!)
+
+        userName.text = "Email-->" + user?.email
+
+        userreference?.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                firstName.text = "First Name-->" + snapshot.child("firstname").value.toString()
+                lastName.text = "Last name-->" + snapshot.child("lastname").value.toString()
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+        logOutbutton.setOnClickListener(){
+            auth.signOut()
+            startActivity(Intent(this@Profile, LogIn::class.java))
+            finish()
+        }
+
+
     }
 }

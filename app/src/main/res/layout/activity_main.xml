@@ -7,12 +7,47 @@
     tools:context=".Profile">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvFistName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:text="F. Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="l.Name"
+        app:layout_constraintEnd_toEndOf="@+id/tvFistName"
+        app:layout_constraintStart_toStartOf="@+id/tvFistName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFistName" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="UserName"
+        app:layout_constraintEnd_toEndOf="@+id/tvLastName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:text="LOG OUT"
+        app:layout_constraintEnd_toEndOf="@+id/tvUsername"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvUsername"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>
